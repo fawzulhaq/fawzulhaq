@@ -1,16 +1,23 @@
-## Hi there 👋
+# Hi, I'm Fawzul Haq 👋
+### System Engineer | Cybersecurity Enthusiast
 
-<!--
-**fawzulhaq/fawzulhaq** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Experienced System Engineer with over 4 years of experience managing IT infrastructure, server administration, and network security. Passionate about blue teaming, security monitoring, and automating threat detection.
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🛠️ Technical Skills
+- **Security Operations & SIEM:** Wazuh Configuration, Log Monitoring, Threat Detection
+- **System Administration:** Windows & Linux Server Maintenance, Active Directory, Patch Management
+- **Network & Compliance:** Network Troubleshooting, Endpoint Security, ISO Compliance Support
+
+### 🎓 Certifications
+- Certified Red Team Operations Management (CRTOM)
+- Certified Phishing Prevention Specialist (CPPS)
+- CompTIA Security+ (Reading) | ISC2 Certified Cybersecurity (Reading)
+
+---
+
+### 🚀 Featured Project
+#### 🛡️ AI-Driven SIEM Integration using Wazuh
+Implemented a centralized security system using Wazuh and the Kibana Stack to monitor logs and detect anomalies in real-time, integrating AI/Machine Learning to distinguish between real threats and false alarms. 
+👉 **[View the Repository](https://github.com/fawzulhaq/AI-SIEM-Wazuh)**

@@ -20,4 +20,3 @@ Experienced System Engineer with over 4 years of experience managing IT infrastr
 ### 🚀 Featured Project
 #### 🛡️ AI-Driven SIEM Integration using Wazuh
 Implemented a centralized security system using Wazuh and the Kibana Stack to monitor logs and detect anomalies in real-time, integrating AI/Machine Learning to distinguish between real threats and false alarms. 
-👉 **[View the Repository](https://github.com/fawzulhaq/AI-SIEM-Wazuh)**

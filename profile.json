@@ -1,0 +1,291 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-15",
+    "version": "1.0"
+  },
+  "basics": {
+    "name": "M.N.M. Fawzul Haq",
+    "label": "System Engineer | Cybersecurity Enthusiast",
+    "email": "fawzulhaq.mnm@gmail.com",
+    "phone": "+94765239680",
+    "location": {
+      "address": "81/2 Bandaranayake Mawatha",
+      "city": "Kalubowila",
+      "country": "Sri Lanka"
+    },
+    "profiles": {
+      "linkedin": "https://www.linkedin.com/in/fawzul-haq-377092174",
+      "github": "https://github.com/fawzulhaq",
+      "tryhackme": "https://tryhackme.com/p/fawzulhaq"
+    },
+    "summary": "Motivated and detail-oriented System Engineer and Cybersecurity Enthusiast with over 4 years of experience in IT infrastructure management, server administration, and network security. Skilled in system troubleshooting, endpoint protection, and ISO compliance support. Strong team player with a proven ability to resolve technical issues efficiently and maintain smooth IT operations. Holds a BSc (Hons) in Computer Networks & Security (Second Class, Upper Division)."
+  },
+  "work": [
+    {
+      "company": "Mitra Innovation",
+      "location": "Moratuwa, Sri Lanka",
+      "position": "System Engineer",
+      "startDate": "2024-06",
+      "endDate": null,
+      "current": true,
+      "highlights": [
+        "Troubleshooting and configuring Wazuh for continuous security monitoring and automated threat detection",
+        "Conducting switch, access point firmware updates and Windows/Linux server patch management",
+        "Delivering security awareness training to employees",
+        "Supporting ISO audits and maintaining compliance readiness through rigorous system maintenance and documentation",
+        "Providing network troubleshooting support and system maintenance",
+        "Conducting Active Directory, firewall, and access control reviews"
+      ]
+    },
+    {
+      "company": "Mitra Innovation",
+      "location": "Moratuwa, Sri Lanka",
+      "position": "Associate System Engineer",
+      "startDate": "2022-04",
+      "endDate": "2024-06",
+      "current": false,
+      "highlights": [
+        "Conducted internal inventory audits and maintained accurate IT asset records",
+        "Handled door access control troubleshooting and configurations",
+        "Managed fingerprint enrollment and generated attendance reports",
+        "Performed patch management and updates for endpoints",
+        "Conducted IT onboarding sessions for new employees",
+        "Updated Windows and Ubuntu servers, deployed systems via MDT",
+        "Managed Sophos Central, backup, restore, and verification operations"
+      ]
+    },
+    {
+      "company": "Mitra Innovation",
+      "location": "Moratuwa, Sri Lanka",
+      "position": "Intern – System Engineer",
+      "startDate": "2021-09",
+      "endDate": "2022-04",
+      "current": false,
+      "highlights": [
+        "Prepared computers for new employees and provided IT support",
+        "Troubleshot hardware issues and installed security applications on endpoints",
+        "Managed asset inventory and supported the asset disposal process",
+        "Assisted with system and network issues for internal users",
+        "Supported hardware purchasing, quotation preparation, and purchase orders",
+        "Performed minor hardware repairs and provided technical support during company events"
+      ]
+    },
+    {
+      "company": "Hashnative Software Engineering",
+      "location": "Colombo 05, Sri Lanka",
+      "position": "Trainee – Software Engineer",
+      "startDate": "2019-12",
+      "endDate": "2020-06",
+      "current": false,
+      "highlights": [
+        "Collaborated on internal and client projects as a developer and designer",
+        "Designed templates and contributed to mobile, desktop, and web application development",
+        "Worked with PHP, Java, Laravel, Flutter, and WordPress frameworks"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Wrexham University",
+      "area": "Computer Networks and Security",
+      "studyType": "BSc (Hons)",
+      "startDate": "2024",
+      "endDate": "2025",
+      "grade": "Second Class, Upper Division"
+    },
+    {
+      "institution": "Winsys City Campus",
+      "area": "Cyber Security",
+      "studyType": "Qualifi Level 5 Diploma",
+      "startDate": "2018",
+      "endDate": "2019",
+      "grade": ""
+    },
+    {
+      "institution": "JMC Institute",
+      "area": "Computer Hardware Technology",
+      "studyType": "Certificate",
+      "startDate": "2016",
+      "endDate": "2016",
+      "grade": ""
+    },
+    {
+      "institution": "Zahira College, Colombo",
+      "area": "Arts Stream",
+      "studyType": "G.C.E. Advanced Level",
+      "startDate": "2018",
+      "endDate": "2018",
+      "grade": ""
+    },
+    {
+      "institution": "Zahira College, Colombo",
+      "area": "General",
+      "studyType": "G.C.E. Ordinary Level",
+      "startDate": "2015",
+      "endDate": "2015",
+      "grade": ""
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Certified Red Team Operations Management",
+      "acronym": "CRTOM",
+      "issuer": "",
+      "date": "",
+      "status": "earned"
+    },
+    {
+      "name": "Certified Phishing Prevention Specialist",
+      "acronym": "CPPS",
+      "issuer": "",
+      "date": "",
+      "status": "earned"
+    },
+    {
+      "name": "Cybersecurity Career Starter Certification",
+      "acronym": "CCSC",
+      "issuer": "",
+      "date": "",
+      "status": "earned"
+    },
+    {
+      "name": "Networking Academy Learn-A-Thon – Network Security",
+      "acronym": "Cisco",
+      "issuer": "Cisco",
+      "date": "2020",
+      "status": "earned"
+    },
+    {
+      "name": "CompTIA Security+",
+      "acronym": "SY0-701",
+      "issuer": "CompTIA",
+      "date": "",
+      "status": "in-progress",
+      "progress": 65
+    },
+    {
+      "name": "ISC2 Certified in Cybersecurity",
+      "acronym": "CC",
+      "issuer": "ISC2",
+      "date": "",
+      "status": "in-progress",
+      "progress": 70
+    },
+    {
+      "name": "Certified Ethical Hacker",
+      "acronym": "CEH",
+      "issuer": "EC-Council",
+      "date": "",
+      "status": "in-progress",
+      "progress": 50
+    }
+  ],
+  "skills": {
+    "technical": [
+      "System Administration",
+      "Network Troubleshooting",
+      "Wazuh SIEM Configuration",
+      "Security Monitoring",
+      "Server Maintenance",
+      "Patch Management",
+      "Backup & Recovery",
+      "ISO Compliance",
+      "Endpoint Security",
+      "IT Onboarding",
+      "SIEM",
+      "Security Operations",
+      "Active Directory",
+      "Firewall Management",
+      "Linux Administration",
+      "Windows Server",
+      "Sophos Central",
+      "Kibana",
+      "Elasticsearch",
+      "MDT Deployment"
+    ],
+    "soft": [
+      "Teamwork",
+      "Communication",
+      "Problem Solving",
+      "Time Management",
+      "Adaptability",
+      "Analytical Thinking",
+      "Continuous Learning"
+    ],
+    "development": [
+      "PHP",
+      "Laravel",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "WordPress",
+      "Flutter",
+      "C#",
+      "Java"
+    ]
+  },
+  "projects": [
+    {
+      "name": "AI-SIEM Integration",
+      "description": "Implemented AI-Driven SIEM to Enhance Security Using Wazuh. Built a central security system using Wazuh and the Kibana Stack to monitor logs and detect threats in real-time. Integrated AI/Machine Learning to distinguish real threats from false alarms.",
+      "highlights": [
+        "Built central security system using Wazuh and the Kibana Stack for real-time log monitoring",
+        "Integrated AI/Machine Learning for intelligent threat classification",
+        "Set up automated vulnerability scanning tools",
+        "Created Kibana dashboards for live security data visualization"
+      ],
+      "technologies": ["Wazuh", "Elasticsearch", "Kibana", "ChatGPT", "Linux", "AI/ML"],
+      "featured": true
+    },
+    {
+      "name": "Happy Toys – E-Commerce Website",
+      "description": "Developed a full-featured e-commerce website for an online toy store using WordPress.",
+      "highlights": [],
+      "technologies": ["WordPress", "HTML", "CSS", "Bootstrap", "JavaScript"],
+      "featured": false
+    },
+    {
+      "name": "Budget App",
+      "description": "Web-based application for calculating income and expenses.",
+      "highlights": [],
+      "technologies": ["Laravel", "PHP", "HTML", "CSS", "Bootstrap"],
+      "featured": false
+    },
+    {
+      "name": "Task Diary",
+      "description": "Web-based application for task management.",
+      "highlights": [],
+      "technologies": ["Laravel", "PHP", "HTML", "CSS", "JavaScript"],
+      "featured": false
+    },
+    {
+      "name": "Maths Cal",
+      "description": "Desktop application for solving simple mathematical problems.",
+      "highlights": [],
+      "technologies": ["C#", "Windows Forms", ".NET"],
+      "featured": false
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "FITIS",
+      "role": "Volunteer",
+      "event": "Infotel ICT Expo 2019",
+      "venue": "BMICH"
+    }
+  ],
+  "references": [
+    {
+      "name": "Kavinda Munasinghe",
+      "title": "Director IT",
+      "company": "Cinnamon Hotels & Resorts",
+      "email": "kavinda@gmail.com"
+    },
+    {
+      "name": "Ilham Safeek",
+      "title": "Founder",
+      "company": "Hashnate Software Engineering",
+      "email": "ilhamsafeek@yahoo.com"
+    }
+  ]
+}

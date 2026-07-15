@@ -1,0 +1,9 @@
+REPLACE THIS FILE WITH YOUR ACTUAL CV PDF
+
+To add your CV:
+1. Export your CV as a PDF file
+2. Name it exactly: fawzulhaq_cv.pdf
+3. Place it in the same folder as index.html
+4. Push/upload to GitHub
+
+The portfolio already has "Download CV" buttons linked to this file.

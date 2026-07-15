@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Update Profile | Fawzul Haq Portfolio</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #080c10; --bg2: #0d1117; --card: #0f1923;
+      --green: #00ff88; --cyan: #00d4ff; --red: #ff3366;
+      --text: #e6edf3; --muted: #8b949e; --border: rgba(0,255,136,0.15);
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem; }
+    h1 { font-size: 1.6rem; color: var(--green); font-family: var(--font-mono); margin-bottom: 0.5rem; }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2.5rem; }
+    .back-link { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); text-decoration: none; margin-bottom: 2rem; }
+    .back-link:hover { text-decoration: underline; }
+    .section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
+    .section-title { font-family: var(--font-mono); font-size: 0.85rem; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .step-badge { background: var(--green); color: #080c10; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+    .instructions { background: rgba(0,255,136,0.04); border: 1px solid rgba(0,255,136,0.15); border-radius: 8px; padding: 1.2rem; margin-bottom: 1.5rem; }
+    .instructions p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.5rem; }
+    .instructions p:last-child { margin-bottom: 0; }
+    .instructions strong { color: var(--text); }
+    .instructions a { color: var(--cyan); }
+    .drop-zone { border: 2px dashed var(--border); border-radius: 10px; padding: 3rem; text-align: center; cursor: pointer; transition: all 0.3s; margin-bottom: 1.5rem; }
+    .drop-zone:hover, .drop-zone.drag-over { border-color: var(--green); background: rgba(0,255,136,0.04); }
+    .drop-zone-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .drop-zone-text { font-size: 0.95rem; color: var(--muted); }
+    .drop-zone-text strong { color: var(--text); }
+    input[type="file"] { display: none; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border: none; border-radius: 6px; cursor: pointer; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; transition: all 0.3s; text-decoration: none; }
+    .btn-primary { background: var(--green); color: #080c10; }
+    .btn-primary:hover { background: #00cc6a; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
+    .btn-secondary { background: transparent; color: var(--cyan); border: 1px solid var(--cyan); }
+    .btn-secondary:hover { background: rgba(0,212,255,0.1); }
+    .btn-danger { background: rgba(255,51,102,0.1); color: var(--red); border: 1px solid rgba(255,51,102,0.3); }
+    .btn-danger:hover { background: rgba(255,51,102,0.2); }
+    .status-box { background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.2); border-radius: 8px; padding: 1rem 1.2rem; font-family: var(--font-mono); font-size: 0.82rem; display: none; margin-top: 1rem; }
+    .status-box.visible { display: block; }
+    .status-box .log-line { color: var(--muted); padding: 2px 0; }
+    .status-box .log-line.success { color: var(--green); }
+    .status-box .log-line.warn { color: #ffd700; }
+    .status-box .log-line.error { color: var(--red); }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.83rem; }
+    th { font-family: var(--font-mono); color: var(--muted); text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; }
+    td { padding: 0.6rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 100px; font-size: 0.7rem; font-family: var(--font-mono); margin: 1px; }
+    .tag-green { background: rgba(0,255,136,0.1); color: var(--green); border: 1px solid rgba(0,255,136,0.2); }
+    .tag-cyan  { background: rgba(0,212,255,0.1); color: var(--cyan);  border: 1px solid rgba(0,212,255,0.2); }
+    .tag-yellow{ background: rgba(255,215,0,0.1);  color: #ffd700;       border: 1px solid rgba(255,215,0,0.2); }
+    .preview-json { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); max-height: 300px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; display: none; margin-top: 1rem; }
+    .btn-group { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .progress-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 6px; margin-top: 0.5rem; }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, var(--green), var(--cyan)); border-radius: 4px; transition: width 0.4s; }
+    .field-editable { background: transparent; border: 1px solid transparent; border-radius: 4px; color: var(--text); font-family: var(--font-sans); font-size: 0.83rem; padding: 0.25rem 0.4rem; width: 100%; transition: all 0.2s; }
+    .field-editable:hover { border-color: var(--border); }
+    .field-editable:focus { outline: none; border-color: var(--green); background: rgba(0,255,136,0.05); }
+    .saved-badge { display: none; font-family: var(--font-mono); font-size: 0.72rem; color: var(--green); padding: 0.2rem 0.6rem; background: rgba(0,255,136,0.1); border-radius: 100px; }
+    .saved-badge.show { display: inline-block; animation: fadeOut 2s forwards 1s; }
+    @keyframes fadeOut { to { opacity: 0; } }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+    .info-card { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1rem; }
+    .info-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .info-card p strong { color: var(--cyan); }
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .method-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
+    .method-card h4 { font-size: 0.9rem; color: var(--text); margin-bottom: 0.5rem; }
+    .method-card p  { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .method-status { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 100px; display: inline-block; margin-bottom: 0.5rem; }
+    .ms-recommended { background: rgba(0,255,136,0.1); color: var(--green); }
+    .ms-limited { background: rgba(255,215,0,0.1); color: #ffd700; }
+    .ms-blocked { background: rgba(255,51,102,0.1); color: var(--red); }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+  <h1>⚙️ Profile Updater</h1>
+  <p class="subtitle">Sync your data from LinkedIn export or edit directly. Changes update your CV automatically.</p>
+
+  <!-- HOW TO GET LINKEDIN DATA -->
+  <div class="section">
+    <div class="section-title"><span class="step-badge">?</span> How to Get Your LinkedIn Data</div>
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="method-status ms-recommended">✅ Recommended</span>
+        <h4>LinkedIn Data Export</h4>
+        <p>Download your own data from LinkedIn. 100% free, official, accurate. Takes ~10 minutes to get the file.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-status ms-limited">⚡ Limited</span>
+        <h4>GitHub Public API</h4>
+        <p>Auto-fetches your repos and languages. Free, real-time, no login needed. Good for projects section.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-status ms-blocked">🚫 Blocked</span>
+        <h4>LinkedIn Scraping</h4>
+        <p>LinkedIn actively blocks automated access (you saw the 999 error). Against their ToS.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-status ms-blocked">💰 Paid</span>
+        <h4>LinkedIn Official API</h4>
+        <p>Requires company partnership approval. Not available for personal portfolios.</p>
+      </div>
+    </div>
+    <hr class="divider"/>
+    <div class="instructions">
+      <p><strong>How to export your LinkedIn data (takes ~10 minutes):</strong></p>
+      <p>1. Go to <a href="https://www.linkedin.com/mypreferences/d/download-my-data" target="_blank">LinkedIn → Me → Settings → Data Privacy → Get a copy of your data</a></p>
+      <p>2. Select <strong>"The works"</strong> or choose: <strong>Profile, Positions, Education, Skills, Certifications</strong></p>
+      <p>3. Click <strong>Request archive</strong> — LinkedIn emails you a ZIP file (usually within minutes to 24 hours)</p>
+      <p>4. Download the ZIP and drop it in the box below ↓</p>
+    </div>
+  </div>
+
+  <!-- LINKEDIN ZIP UPLOADER -->
+  <div class="section">
+    <div class="section-title"><span class="step-badge">1</span> Import LinkedIn Export ZIP</div>
+    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('linkedin-file').click()">
+      <div class="drop-zone-icon">📦</div>
+      <p class="drop-zone-text"><strong>Drop your LinkedIn export ZIP here</strong><br/>or click to browse</p>
+      <input type="file" id="linkedin-file" accept=".zip"/>
+    </div>
+    <div class="status-box" id="parse-status"></div>
+  </div>
+
+  <!-- GITHUB SYNC -->
+  <div class="section">
+    <div class="section-title"><span class="step-badge">2</span> Sync GitHub Data (Auto)</div>
+    <div class="info-card">
+      <p>Fetches your <strong>public GitHub repositories</strong> and language stats via the free GitHub API. No login needed.</p>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="syncGitHub()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        Sync GitHub Repos
+      </button>
+    </div>
+    <div class="status-box" id="github-status"></div>
+  </div>
+
+  <!-- CURRENT PROFILE EDITOR -->
+  <div class="section">
+    <div class="section-title"><span class="step-badge">3</span> Current Profile Data <span id="save-badge" class="saved-badge">Saved ✓</span></div>
+    <div id="profile-editor">Loading profile...</div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="saveProfile()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Changes
+      </button>
+      <button class="btn btn-secondary" onclick="previewJSON()">View JSON</button>
+      <button class="btn btn-danger" onclick="resetToDefaults()">Reset to CV Data</button>
+    </div>
+    <div class="preview-json" id="json-preview"></div>
+  </div>
+
+  <!-- GENERATE CV PREVIEW -->
+  <div class="section">
+    <div class="section-title"><span class="step-badge">4</span> Generate & Preview CV</div>
+    <p style="color:var(--muted); font-size:0.88rem; margin-bottom:1.2rem;">Generates an ATS-optimized PDF from your current profile data. The portfolio's Download CV button does this automatically.</p>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="generateCV()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Generate & Download ATS CV
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="cv-generator.js"></script>
+  <script>
+    let profileData = null;
+
+    // ---- Load profile ----
+    async function loadProfile() {
+      try {
+        const res = await fetch('profile.json?v=' + Date.now());
+        profileData = await res.json();
+        renderEditor(profileData);
+      } catch (e) {
+        document.getElementById('profile-editor').innerHTML =
+          '<p style="color:var(--red)">Could not load profile.json. Make sure the file exists.</p>';
+      }
+    }
+
+    function renderEditor(data) {
+      const el = document.getElementById('profile-editor');
+      el.innerHTML = `
+        <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);margin-bottom:1rem;">
+          Last updated: <span style="color:var(--cyan)">${data.meta?.lastUpdated || 'Unknown'}</span>
+        </p>
+
+        <h4 style="color:var(--text);margin-bottom:0.8rem;font-size:0.95rem;">📋 Basic Info</h4>
+        <table>
+          <tr><th>Field</th><th>Value</th></tr>
+          <tr><td style="color:var(--muted);font-size:0.8rem">Name</td><td><input class="field-editable" id="f-name" value="${data.basics.name}"/></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.8rem">Title</td><td><input class="field-editable" id="f-label" value="${data.basics.label}"/></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.8rem">Email</td><td><input class="field-editable" id="f-email" value="${data.basics.email}"/></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.8rem">Phone</td><td><input class="field-editable" id="f-phone" value="${data.basics.phone}"/></td></tr>
+          <tr><td style="color:var(--muted);font-size:0.8rem">Location</td><td><input class="field-editable" id="f-location" value="${data.basics.location.city}, ${data.basics.location.country}"/></td></tr>
+        </table>
+
+        <hr class="divider"/>
+        <h4 style="color:var(--text);margin-bottom:0.8rem;font-size:0.95rem;">💼 Work Experience (${data.work.length} entries)</h4>
+        <table>
+          <tr><th>Position</th><th>Company</th><th>Period</th><th>Status</th></tr>
+          ${data.work.map((w,i) => `
+          <tr>
+            <td><input class="field-editable" id="w-pos-${i}" value="${w.position}"/></td>
+            <td><span style="color:var(--cyan);font-size:0.82rem">${w.company}</span></td>
+            <td style="color:var(--muted);font-size:0.78rem;font-family:var(--font-mono)">${w.startDate} → ${w.endDate || 'Present'}</td>
+            <td>${w.current ? '<span class="tag tag-green">Current</span>' : '<span class="tag tag-cyan">Past</span>'}</td>
+          </tr>`).join('')}
+        </table>
+
+        <hr class="divider"/>
+        <h4 style="color:var(--text);margin-bottom:0.8rem;font-size:0.95rem;">🎓 Education (${data.education.length} entries)</h4>
+        <table>
+          <tr><th>Degree</th><th>Institution</th><th>Year</th></tr>
+          ${data.education.map(e => `
+          <tr>
+            <td style="font-size:0.83rem">${e.studyType} ${e.area}</td>
+            <td style="color:var(--cyan);font-size:0.82rem">${e.institution}</td>
+            <td style="color:var(--muted);font-family:var(--font-mono);font-size:0.78rem">${e.startDate}${e.endDate !== e.startDate ? '–'+e.endDate : ''}</td>
+          </tr>`).join('')}
+        </table>
+
+        <hr class="divider"/>
+        <h4 style="color:var(--text);margin-bottom:0.8rem;font-size:0.95rem;">🏅 Certifications (${data.certifications.length} entries)</h4>
+        <table>
+          <tr><th>Certification</th><th>Issuer</th><th>Status</th></tr>
+          ${data.certifications.map(c => `
+          <tr>
+            <td style="font-size:0.83rem">${c.name}</td>
+            <td style="color:var(--muted);font-size:0.78rem">${c.issuer || c.acronym}</td>
+            <td>${c.status === 'earned'
+                ? '<span class="tag tag-green">✓ Earned</span>'
+                : `<span class="tag tag-yellow">📖 In Progress (${c.progress||0}%)</span>`}</td>
+          </tr>`).join('')}
+        </table>
+
+        <hr class="divider"/>
+        <h4 style="color:var(--text);margin-bottom:0.8rem;font-size:0.95rem;">🔧 Technical Skills</h4>
+        <div style="margin-top:0.5rem">
+          ${data.skills.technical.map(s => `<span class="tag tag-green">${s}</span>`).join('')}
+        </div>
+        <div id="github-repos" style="margin-top:1rem"></div>
+      `;
+    }
+
+    // ---- LinkedIn ZIP Parser ----
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('linkedin-file');
+
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault(); dropZone.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file) processLinkedInZip(file);
+    });
+    fileInput.addEventListener('change', e => { if (e.target.files[0]) processLinkedInZip(e.target.files[0]); });
+
+    async function processLinkedInZip(file) {
+      const status = document.getElementById('parse-status');
+      status.classList.add('visible');
+      status.innerHTML = '';
+      const log = (msg, type='') => {
+        const line = document.createElement('div');
+        line.className = `log-line ${type}`;
+        line.textContent = msg;
+        status.appendChild(line);
+        status.scrollTop = status.scrollHeight;
+      };
+
+      log(`📦 Reading: ${file.name} (${(file.size/1024).toFixed(1)} KB)`);
+
+      try {
+        const zip = await JSZip.loadAsync(file);
+        const files = Object.keys(zip.files);
+        log(`✅ ZIP opened — found ${files.length} files`);
+
+        const parsed = {};
+
+        // Parse Positions (Work Experience)
+        const posFile = files.find(f => /Positions/i.test(f));
+        if (posFile) {
+          const csv = await zip.files[posFile].async('string');
+          parsed.positions = parseCSV(csv);
+          log(`✅ Positions.csv: ${parsed.positions.length} jobs`, 'success');
+        } else log('⚠ Positions.csv not found — skipping work experience', 'warn');
+
+        // Parse Education
+        const eduFile = files.find(f => /Education/i.test(f));
+        if (eduFile) {
+          const csv = await zip.files[eduFile].async('string');
+          parsed.education = parseCSV(csv);
+          log(`✅ Education.csv: ${parsed.education.length} entries`, 'success');
+        } else log('⚠ Education.csv not found', 'warn');
+
+        // Parse Certifications
+        const certFile = files.find(f => /Certif/i.test(f));
+        if (certFile) {
+          const csv = await zip.files[certFile].async('string');
+          parsed.certifications = parseCSV(csv);
+          log(`✅ Certifications.csv: ${parsed.certifications.length} entries`, 'success');
+        } else log('⚠ Certifications.csv not found', 'warn');
+
+        // Parse Skills
+        const skillFile = files.find(f => /Skills/i.test(f));
+        if (skillFile) {
+          const csv = await zip.files[skillFile].async('string');
+          parsed.skills = parseCSV(csv);
+          log(`✅ Skills.csv: ${parsed.skills.length} skills`, 'success');
+        } else log('⚠ Skills.csv not found', 'warn');
+
+        // Parse Profile
+        const profileFile = files.find(f => /Profile\.csv/i.test(f));
+        if (profileFile) {
+          const csv = await zip.files[profileFile].async('string');
+          const rows = parseCSV(csv);
+          if (rows.length > 0) {
+            const p = rows[0];
+            parsed.profile = p;
+            log(`✅ Profile.csv: ${p['First Name'] || ''} ${p['Last Name'] || ''}`, 'success');
+          }
+        }
+
+        // Merge into profileData
+        log('\n🔄 Merging into profile...', '');
+        mergeLinkedInData(parsed);
+        log('✅ Profile updated from LinkedIn!', 'success');
+        log('⬇️  Click "Save Changes" to apply permanently.', '');
+        renderEditor(profileData);
+
+      } catch (err) {
+        log(`❌ Error: ${err.message}`, 'error');
+        log('Make sure you uploaded a valid LinkedIn export ZIP file.', 'warn');
+      }
+    }
+
+    function parseCSV(text) {
+      const lines = text.split('\n').filter(l => l.trim());
+      if (lines.length < 2) return [];
+      const headers = parseCSVLine(lines[0]);
+      return lines.slice(1).map(line => {
+        const vals = parseCSVLine(line);
+        const obj = {};
+        headers.forEach((h, i) => { obj[h.trim()] = (vals[i] || '').trim(); });
+        return obj;
+      }).filter(r => Object.values(r).some(v => v));
+    }
+
+    function parseCSVLine(line) {
+      const result = [];
+      let cur = '', inQuote = false;
+      for (let i = 0; i < line.length; i++) {
+        const c = line[i];
+        if (c === '"') { inQuote = !inQuote; }
+        else if (c === ',' && !inQuote) { result.push(cur); cur = ''; }
+        else { cur += c; }
+      }
+      result.push(cur);
+      return result;
+    }
+
+    function mergeLinkedInData(parsed) {
+      if (!profileData) return;
+
+      // Update work experience
+      if (parsed.positions && parsed.positions.length > 0) {
+        profileData.work = parsed.positions.map(p => ({
+          company:   p['Company Name'] || p['Company'] || '',
+          location:  p['Location'] || '',
+          position:  p['Title'] || p['Position'] || '',
+          startDate: formatLIDate(p['Started On'] || p['Start Date'] || ''),
+          endDate:   p['Finished On'] || p['End Date'] ? formatLIDate(p['Finished On'] || p['End Date']) : null,
+          current:   !(p['Finished On'] || p['End Date']),
+          highlights: (p['Description'] || '').split('\n').filter(l => l.trim()).map(l => l.trim())
+        })).filter(w => w.company && w.position);
+      }
+
+      // Update education
+      if (parsed.education && parsed.education.length > 0) {
+        profileData.education = parsed.education.map(e => ({
+          institution: e['School Name'] || e['School'] || '',
+          area:        e['Field Of Study'] || e['Field of Study'] || '',
+          studyType:   e['Degree Name'] || e['Degree'] || '',
+          startDate:   e['Start Date'] || e['Started On'] || '',
+          endDate:     e['End Date'] || e['Finished On'] || '',
+          grade:       e['Grade'] || e['Activities and Societies'] || ''
+        })).filter(e => e.institution);
+      }
+
+      // Update certifications
+      if (parsed.certifications && parsed.certifications.length > 0) {
+        const newCerts = parsed.certifications.map(c => ({
+          name:    c['Name'] || c['Certification Name'] || '',
+          acronym: c['License Number'] || '',
+          issuer:  c['Authority'] || c['Issuing Organization'] || '',
+          date:    c['Issued On'] || c['Issue Date'] || '',
+          status:  'earned'
+        })).filter(c => c.name);
+
+        // Preserve in-progress certs from current data, add new earned ones
+        const inProgress = profileData.certifications.filter(c => c.status === 'in-progress');
+        profileData.certifications = [...newCerts, ...inProgress];
+      }
+
+      // Update skills
+      if (parsed.skills && parsed.skills.length > 0) {
+        const skillNames = parsed.skills.map(s => s['Name'] || s['Skill'] || '').filter(Boolean);
+        if (skillNames.length > 0) {
+          profileData.skills.technical = skillNames;
+        }
+      }
+
+      // Update basics from profile CSV
+      if (parsed.profile) {
+        const p = parsed.profile;
+        if (p['First Name']) profileData.basics.name = `${p['First Name']} ${p['Last Name']}`.trim();
+        if (p['Headline'])   profileData.basics.label = p['Headline'];
+        if (p['Summary'])    profileData.basics.summary = p['Summary'];
+      }
+
+      profileData.meta.lastUpdated = new Date().toISOString().split('T')[0];
+    }
+
+    function formatLIDate(dateStr) {
+      if (!dateStr) return null;
+      // LinkedIn format: "Jan 2024" or "2024-01"
+      const months = {Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
+      const match = dateStr.match(/^([A-Za-z]{3})\s+(\d{4})$/);
+      if (match) return `${match[2]}-${months[match[1]] || '01'}`;
+      return dateStr.substring(0, 7);
+    }
+
+    // ---- GitHub Sync ----
+    async function syncGitHub() {
+      const status = document.getElementById('github-status');
+      status.classList.add('visible');
+      status.innerHTML = '<div class="log-line">🔄 Fetching GitHub repos for fawzulhaq...</div>';
+
+      try {
+        const res = await fetch('https://api.github.com/users/fawzulhaq/repos?sort=updated&per_page=20');
+        if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+        const repos = await res.json();
+
+        const projectRepos = repos.filter(r => !r.fork && r.name !== 'fawzulhaq');
+        status.innerHTML += `<div class="log-line success">✅ Found ${projectRepos.length} repositories</div>`;
+
+        // Show repo list
+        const container = document.getElementById('github-repos');
+        if (container) {
+          container.innerHTML = `<h4 style="color:var(--text);margin:1rem 0 0.6rem;font-size:0.9rem">📂 GitHub Repositories (${projectRepos.length})</h4>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+              ${projectRepos.map(r => `
+                <span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:6px;padding:0.3rem 0.8rem;font-size:0.78rem;color:var(--cyan)">
+                  ${r.name} ${r.language ? `<span style="opacity:0.6">(${r.language})</span>` : ''}
+                </span>`).join('')}
+            </div>`;
+        }
+
+        status.innerHTML += `<div class="log-line">✅ GitHub data loaded</div>`;
+      } catch (e) {
+        status.innerHTML += `<div class="log-line error">❌ ${e.message}</div>`;
+      }
+    }
+
+    // ---- Save / JSON ----
+    function collectFormValues() {
+      if (!profileData) return;
+      const get = id => { const el = document.getElementById(id); return el ? el.value : null; };
+
+      profileData.basics.name  = get('f-name')  || profileData.basics.name;
+      profileData.basics.label = get('f-label') || profileData.basics.label;
+      profileData.basics.email = get('f-email') || profileData.basics.email;
+      profileData.basics.phone = get('f-phone') || profileData.basics.phone;
+
+      profileData.work.forEach((_, i) => {
+        const pos = get(`w-pos-${i}`);
+        if (pos) profileData.work[i].position = pos;
+      });
+
+      profileData.meta.lastUpdated = new Date().toISOString().split('T')[0];
+    }
+
+    function saveProfile() {
+      collectFormValues();
+      // Download the updated JSON so user can replace profile.json
+      const blob = new Blob([JSON.stringify(profileData, null, 2)], {type: 'application/json'});
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url; a.download = 'profile.json'; a.click();
+      URL.revokeObjectURL(url);
+
+      const badge = document.getElementById('save-badge');
+      badge.classList.add('show');
+      setTimeout(() => badge.classList.remove('show'), 3000);
+    }
+
+    function previewJSON() {
+      collectFormValues();
+      const el = document.getElementById('json-preview');
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      el.textContent = JSON.stringify(profileData, null, 2);
+    }
+
+    function resetToDefaults() {
+      if (confirm('Reset all data to the original CV data?')) {
+        loadProfile();
+      }
+    }
+
+    function generateCV() {
+      collectFormValues();
+      if (typeof generateATSCV === 'function') {
+        generateATSCV(profileData);
+      } else {
+        alert('CV generator not loaded. Make sure cv-generator.js is present.');
+      }
+    }
+
+    // ---- Init ----
+    loadProfile();
+  </script>
+</body>
+</html>

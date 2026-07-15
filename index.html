@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fawzul Haq | Cybersecurity Engineer & Red Team Specialist</title>
+  <meta name="description" content="M.N.M. Fawzul Haq – System Engineer & Cybersecurity Enthusiast specializing in Red Teaming, Ethical Hacking, SIEM, and Security Operations. Based in Sri Lanka." />
+  <meta name="keywords" content="cybersecurity, red team, ethical hacking, system engineer, SIEM, Wazuh, Sri Lanka, portfolio" />
+  <meta property="og:title" content="Fawzul Haq | Cybersecurity Engineer" />
+  <meta property="og:description" content="System Engineer & Cybersecurity Enthusiast with 4+ years of experience in IT infrastructure, security monitoring, and red teaming." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+<body>
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Scanline overlay -->
+  <div class="scanline"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">F<span class="logo-accent">H</span>AQ</span>
+        <span class="logo-bracket">]</span>
+        <span class="cursor-blink">_</span>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link" data-section="home"><span class="nav-index">01.</span> Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about"><span class="nav-index">02.</span> About</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-index">03.</span> Experience</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills"><span class="nav-index">04.</span> Skills</a></li>
+        <li><a href="#certifications" class="nav-link" data-section="certifications"><span class="nav-index">05.</span> Certs</a></li>
+        <li><a href="#labs" class="nav-link" data-section="labs"><span class="nav-index">06.</span> Labs</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-index">07.</span> Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-index">08.</span> Contact</a></li>
+        <li><button onclick="generateATSCVFromURL()" id="cv-download-btn" class="btn-download-nav" style="cursor:pointer;background:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">~/fawzulhaq — bash</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="term-prompt">root@kali:~$</span>
+            <span class="term-cmd" id="typewriter-cmd"></span>
+            <span class="term-cursor">▌</span>
+          </div>
+          <div class="terminal-output" id="terminal-output"></div>
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-greeting">Hello, World. I'm</p>
+        <h1 class="hero-name">
+          <span class="name-highlight">M.N.M.</span><br/>
+          <span class="name-main">Fawzul Haq</span>
+        </h1>
+        <div class="hero-title-wrapper">
+          <span class="hero-title-static">Specializing in </span>
+          <span class="hero-roles" id="role-rotator">Red Teaming</span>
+        </div>
+        <p class="hero-description">
+          System Engineer &amp; Cybersecurity Enthusiast with <strong>4+ years</strong> of experience in IT infrastructure, security monitoring, and threat detection. Passionate about ethical hacking and building resilient security operations.
+        </p>
+        <div class="hero-badges">
+          <span class="hero-badge"><span class="badge-icon">🔴</span> Red Team</span>
+          <span class="hero-badge"><span class="badge-icon">🛡️</span> Blue Team</span>
+          <span class="hero-badge"><span class="badge-icon">🔐</span> Ethical Hacker</span>
+          <span class="hero-badge"><span class="badge-icon">📡</span> SIEM Expert</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get In Touch
+          </a>
+          <button onclick="generateATSCVFromURL()" class="btn-secondary" id="cv-hero-btn" style="cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </button>
+        </div>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/fawzul-haq-377092174" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://github.com/fawzulhaq" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="https://tryhackme.com/p/fawzulhaq" target="_blank" rel="noopener" class="social-link" aria-label="TryHackMe">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          </a>
+          <a href="mailto:fawzulhaq.mnm@gmail.com" class="social-link" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hex grid decoration -->
+    <div class="hex-grid" aria-hidden="true">
+      <div class="hex-item active"></div>
+      <div class="hex-item"></div>
+      <div class="hex-item active"></div>
+      <div class="hex-item"></div>
+      <div class="hex-item active"></div>
+      <div class="hex-item"></div>
+      <div class="hex-item active"></div>
+      <div class="hex-item"></div>
+      <div class="hex-item active"></div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02.</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="about-code-block">
+            <div class="code-header">
+              <span class="code-lang">whoami.sh</span>
+            </div>
+            <pre class="code-content"><code><span class="c-keyword">const</span> <span class="c-var">engineer</span> = {
+  <span class="c-key">name</span>: <span class="c-str">"M.N.M. Fawzul Haq"</span>,
+  <span class="c-key">role</span>: <span class="c-str">"System Engineer | Cybersecurity Enthusiast"</span>,
+  <span class="c-key">location</span>: <span class="c-str">"Sri Lanka 🇱🇰"</span>,
+  <span class="c-key">experience</span>: <span class="c-num">4</span><span class="c-str">+ years</span>,
+  <span class="c-key">education</span>: <span class="c-str">"BSc (Hons) Computer Networks & Security"</span>,
+  <span class="c-key">university</span>: <span class="c-str">"Wrexham University"</span>,
+  <span class="c-key">passion</span>: [
+    <span class="c-str">"Red Teaming"</span>,
+    <span class="c-str">"Ethical Hacking"</span>,
+    <span class="c-str">"SIEM & Threat Detection"</span>,
+    <span class="c-str">"Security Operations"</span>
+  ],
+  <span class="c-key">status</span>: <span class="c-str">"Open to opportunities 🟢"</span>
+};</code></pre>
+          </div>
+          <p class="about-paragraph">
+            Motivated and detail-oriented <strong>System Engineer</strong> and <strong>Cybersecurity Enthusiast</strong> with over 4 years of experience in IT infrastructure management, server administration, and network security.
+          </p>
+          <p class="about-paragraph">
+            Skilled in system troubleshooting, endpoint protection, Wazuh SIEM configuration, and ISO compliance support. Currently pursuing <strong>CompTIA Security+</strong>, <strong>ISC2 CC</strong>, and <strong>CEH</strong> certifications, with a BSc (Hons) in Computer Networks &amp; Security from Wrexham University (Second Class, Upper Division).
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-number">4+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Certifications</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Active Labs</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="profile-card">
+            <div class="profile-avatar">
+              <div class="avatar-ring"></div>
+              <div class="avatar-inner">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="avatar-icon">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              </div>
+              <div class="avatar-status"></div>
+            </div>
+            <h3 class="profile-name">Fawzul Haq</h3>
+            <p class="profile-title">System Engineer & Cybersecurity Enthusiast</p>
+            <div class="profile-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Kalubowila, Sri Lanka
+            </div>
+            <div class="profile-links">
+              <a href="https://www.linkedin.com/in/fawzul-haq-377092174" target="_blank" class="profile-link-btn">LinkedIn</a>
+              <a href="https://github.com/fawzulhaq" target="_blank" class="profile-link-btn">GitHub</a>
+              <a href="https://tryhackme.com/p/fawzulhaq" target="_blank" class="profile-link-btn">TryHackMe</a>
+            </div>
+          </div>
+
+          <!-- Threat radar animation -->
+          <div class="radar-container" aria-hidden="true">
+            <div class="radar-ring r1"></div>
+            <div class="radar-ring r2"></div>
+            <div class="radar-ring r3"></div>
+            <div class="radar-sweep"></div>
+            <div class="radar-dot d1"></div>
+            <div class="radar-dot d2"></div>
+            <div class="radar-dot d3"></div>
+            <div class="radar-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03.</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker current">
+            <div class="marker-pulse"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 class="job-title">System Engineer</h3>
+                <span class="job-status current-badge">Current</span>
+              </div>
+              <div class="card-meta">
+                <span class="company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  Mitra Innovation, Moratuwa
+                </span>
+                <span class="period">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  June 2024 – Present
+                </span>
+              </div>
+            </div>
+            <ul class="job-duties">
+              <li><span class="duty-icon">⚡</span> Configuring and troubleshooting <strong>Wazuh SIEM</strong> for continuous security monitoring and automated threat detection</li>
+              <li><span class="duty-icon">🔄</span> Conducting switch, access point firmware updates and Windows/Linux server patch management</li>
+              <li><span class="duty-icon">📚</span> Delivering security awareness training programs to employees</li>
+              <li><span class="duty-icon">📋</span> Supporting ISO audits and maintaining compliance readiness through rigorous documentation</li>
+              <li><span class="duty-icon">🌐</span> Providing network troubleshooting and system maintenance support</li>
+              <li><span class="duty-icon">🔒</span> Conducting Active Directory, firewall, and access control reviews</li>
+            </ul>
+            <div class="job-tags">
+              <span class="tech-tag">Wazuh</span>
+              <span class="tech-tag">SIEM</span>
+              <span class="tech-tag">Linux</span>
+              <span class="tech-tag">Active Directory</span>
+              <span class="tech-tag">ISO Compliance</span>
+              <span class="tech-tag">Network Security</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 class="job-title">Associate System Engineer</h3>
+              </div>
+              <div class="card-meta">
+                <span class="company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  Mitra Innovation, Moratuwa
+                </span>
+                <span class="period">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  April 2022 – June 2024
+                </span>
+              </div>
+            </div>
+            <ul class="job-duties">
+              <li><span class="duty-icon">📦</span> Conducted internal inventory audits and maintained accurate IT asset records</li>
+              <li><span class="duty-icon">🚪</span> Handled door access control troubleshooting and configurations</li>
+              <li><span class="duty-icon">👆</span> Managed fingerprint enrollment and generated attendance reports</li>
+              <li><span class="duty-icon">🔧</span> Performed patch management and updates for endpoints</li>
+              <li><span class="duty-icon">🖥️</span> Updated Windows and Ubuntu servers, deployed systems via MDT</li>
+              <li><span class="duty-icon">🛡️</span> Managed Sophos Central, backup, restore, and verification operations</li>
+            </ul>
+            <div class="job-tags">
+              <span class="tech-tag">Sophos Central</span>
+              <span class="tech-tag">Patch Management</span>
+              <span class="tech-tag">MDT</span>
+              <span class="tech-tag">Windows Server</span>
+              <span class="tech-tag">Ubuntu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 class="job-title">Intern – System Engineer</h3>
+              </div>
+              <div class="card-meta">
+                <span class="company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  Mitra Innovation, Moratuwa
+                </span>
+                <span class="period">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Sept 2021 – April 2022
+                </span>
+              </div>
+            </div>
+            <ul class="job-duties">
+              <li><span class="duty-icon">💻</span> Prepared computers for new employees and provided IT support</li>
+              <li><span class="duty-icon">🔨</span> Troubleshot hardware issues and installed security applications on endpoints</li>
+              <li><span class="duty-icon">📊</span> Managed asset inventory and supported the asset disposal process</li>
+              <li><span class="duty-icon">🛠️</span> Performed minor hardware repairs and provided technical support during events</li>
+            </ul>
+            <div class="job-tags">
+              <span class="tech-tag">IT Support</span>
+              <span class="tech-tag">Hardware</span>
+              <span class="tech-tag">Asset Management</span>
+              <span class="tech-tag">Endpoint Security</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <h3 class="job-title">Trainee – Software Engineer</h3>
+              </div>
+              <div class="card-meta">
+                <span class="company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  Hashnative Software Engineering, Colombo
+                </span>
+                <span class="period">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Dec 2019 – June 2020
+                </span>
+              </div>
+            </div>
+            <ul class="job-duties">
+              <li><span class="duty-icon">🚀</span> Collaborated on internal and client projects as a developer and designer</li>
+              <li><span class="duty-icon">🎨</span> Designed templates and contributed to mobile, desktop, and web application development</li>
+              <li><span class="duty-icon">⚙️</span> Worked with PHP, Java, Laravel, Flutter, and WordPress frameworks</li>
+            </ul>
+            <div class="job-tags">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">WordPress</span>
+              <span class="tech-tag">Java</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04.</span>
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">🔐</div>
+            <h3>Security Operations</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Wazuh SIEM</span><span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Security Monitoring</span><span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Threat Detection</span><span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Endpoint Security (Sophos)</span><span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>ISO Compliance</span><span class="skill-pct">78%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">🔧</div>
+            <h3>System Administration</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Windows Server</span><span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Linux Administration</span><span class="skill-pct">82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Active Directory</span><span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Patch Management</span><span class="skill-pct">87%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="87"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Backup & Recovery</span><span class="skill-pct">83%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="83"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">🌐</div>
+            <h3>Network & Infrastructure</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Network Troubleshooting</span><span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Firewall Management</span><span class="skill-pct">78%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Access Control</span><span class="skill-pct">82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Switch & AP Configuration</span><span class="skill-pct">79%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="79"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">💻</div>
+            <h3>Development & Tools</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Kibana / Elasticsearch</span><span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>PHP / Laravel</span><span class="skill-pct">70%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>WordPress</span><span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>C# / Desktop Development</span><span class="skill-pct">65%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Soft Skills Tags -->
+      <div class="soft-skills">
+        <h3 class="soft-skills-title">Soft Skills</h3>
+        <div class="soft-tags">
+          <span class="soft-tag">🤝 Teamwork</span>
+          <span class="soft-tag">💬 Communication</span>
+          <span class="soft-tag">🧩 Problem Solving</span>
+          <span class="soft-tag">⏱️ Time Management</span>
+          <span class="soft-tag">🔄 Adaptability</span>
+          <span class="soft-tag">🧠 Analytical Thinking</span>
+          <span class="soft-tag">📈 Continuous Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS SECTION -->
+  <section id="certifications" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">05.</span>
+        <h2 class="section-title">Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="cert-grid">
+
+        <div class="cert-card active">
+          <div class="cert-icon">🎯</div>
+          <div class="cert-body">
+            <h3 class="cert-name">Certified Red Team Operations Management</h3>
+            <span class="cert-acronym">CRTOM</span>
+            <div class="cert-status completed">✓ Earned</div>
+          </div>
+          <div class="cert-glow"></div>
+        </div>
+
+        <div class="cert-card active">
+          <div class="cert-icon">🎣</div>
+          <div class="cert-body">
+            <h3 class="cert-name">Certified Phishing Prevention Specialist</h3>
+            <span class="cert-acronym">CPPS</span>
+            <div class="cert-status completed">✓ Earned</div>
+          </div>
+          <div class="cert-glow"></div>
+        </div>
+
+        <div class="cert-card active">
+          <div class="cert-icon">🚀</div>
+          <div class="cert-body">
+            <h3 class="cert-name">Cybersecurity Career Starter Certification</h3>
+            <span class="cert-acronym">CCSC</span>
+            <div class="cert-status completed">✓ Earned</div>
+          </div>
+          <div class="cert-glow"></div>
+        </div>
+
+        <div class="cert-card active">
+          <div class="cert-icon">🌐</div>
+          <div class="cert-body">
+            <h3 class="cert-name">Networking Academy Learn-A-Thon</h3>
+            <span class="cert-acronym">Network Security | Cisco | 2020</span>
+            <div class="cert-status completed">✓ Earned</div>
+          </div>
+          <div class="cert-glow"></div>
+        </div>
+
+        <div class="cert-card reading">
+          <div class="cert-icon">🔐</div>
+          <div class="cert-body">
+            <h3 class="cert-name">CompTIA Security+</h3>
+            <span class="cert-acronym">SY0-701</span>
+            <div class="cert-status in-progress">📖 In Progress</div>
+            <div class="cert-progress-bar">
+              <div class="cert-progress-fill" style="width: 65%"></div>
+            </div>
+          </div>
+          <div class="cert-glow reading-glow"></div>
+        </div>
+
+        <div class="cert-card reading">
+          <div class="cert-icon">🏛️</div>
+          <div class="cert-body">
+            <h3 class="cert-name">ISC2 Certified in Cybersecurity</h3>
+            <span class="cert-acronym">CC</span>
+            <div class="cert-status in-progress">📖 In Progress</div>
+            <div class="cert-progress-bar">
+              <div class="cert-progress-fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="cert-glow reading-glow"></div>
+        </div>
+
+        <div class="cert-card reading">
+          <div class="cert-icon">⚔️</div>
+          <div class="cert-body">
+            <h3 class="cert-name">Certified Ethical Hacker</h3>
+            <span class="cert-acronym">CEH | EC-Council</span>
+            <div class="cert-status in-progress">📖 In Progress</div>
+            <div class="cert-progress-bar">
+              <div class="cert-progress-fill" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="cert-glow reading-glow"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LABS SECTION -->
+  <section id="labs" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">06.</span>
+        <h2 class="section-title">Labs & Practice</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-subtitle">Actively practicing offensive and defensive security skills through hands-on platforms</p>
+
+      <div class="labs-grid">
+
+        <div class="lab-platform-card">
+          <div class="lab-platform-header thm">
+            <div class="platform-logo">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            </div>
+            <div class="platform-info">
+              <h3>TryHackMe</h3>
+              <a href="https://tryhackme.com/p/fawzulhaq" target="_blank" rel="noopener" class="platform-profile-link">@fawzulhaq →</a>
+            </div>
+            <div class="platform-badge thm-badge">Active</div>
+          </div>
+          <div class="lab-rooms">
+            <h4 class="lab-rooms-title">Focus Areas</h4>
+            <div class="lab-room-tags">
+              <span class="room-tag red">Red Team Fundamentals</span>
+              <span class="room-tag red">Offensive Pentesting</span>
+              <span class="room-tag blue">SOC Level 1</span>
+              <span class="room-tag blue">Security Operations</span>
+              <span class="room-tag purple">Jr. Penetration Tester</span>
+              <span class="room-tag green">Pre-Security</span>
+              <span class="room-tag green">Web Fundamentals</span>
+              <span class="room-tag orange">Network Exploitation</span>
+            </div>
+            <a href="https://tryhackme.com/p/fawzulhaq" target="_blank" rel="noopener" class="view-profile-btn">
+              View Full Profile →
+            </a>
+          </div>
+        </div>
+
+        <div class="lab-platform-card">
+          <div class="lab-platform-header htb">
+            <div class="platform-logo">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+            </div>
+            <div class="platform-info">
+              <h3>Hack The Box</h3>
+              <span class="platform-profile-link">Practicing</span>
+            </div>
+            <div class="platform-badge htb-badge">Active</div>
+          </div>
+          <div class="lab-rooms">
+            <h4 class="lab-rooms-title">Practice Tracks</h4>
+            <div class="lab-room-tags">
+              <span class="room-tag red">Penetration Testing</span>
+              <span class="room-tag purple">CTF Challenges</span>
+              <span class="room-tag blue">Defensive Security</span>
+              <span class="room-tag orange">OSINT</span>
+              <span class="room-tag green">Web Application Security</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lab-platform-card">
+          <div class="lab-platform-header cisco">
+            <div class="platform-logo">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4.18L19 8.3V11c0 4.52-3.08 8.76-7 9.93-3.92-1.17-7-5.41-7-9.93V8.3l7-3.12z"/></svg>
+            </div>
+            <div class="platform-info">
+              <h3>Cisco NetAcad</h3>
+              <span class="platform-profile-link">Certified</span>
+            </div>
+            <div class="platform-badge cisco-badge">Certified</div>
+          </div>
+          <div class="lab-rooms">
+            <h4 class="lab-rooms-title">Completed Courses</h4>
+            <div class="lab-room-tags">
+              <span class="room-tag blue">Networking Basics</span>
+              <span class="room-tag blue">Network Security (Learn-A-Thon 2020)</span>
+              <span class="room-tag green">Cybersecurity Essentials</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Education timeline supplement -->
+      <div class="education-section">
+        <h3 class="edu-section-title">Education</h3>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-year">2024–2025</div>
+            <div class="edu-body">
+              <h4>BSc (Hons) Computer Networks and Security</h4>
+              <p>Wrexham University</p>
+              <span class="edu-grade">Second Class, Upper Division</span>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-year">2018–2019</div>
+            <div class="edu-body">
+              <h4>Qualifi Level 5 Diploma in Cyber Security</h4>
+              <p>Winsys City Campus</p>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-year">2016</div>
+            <div class="edu-body">
+              <h4>Certificate in Computer Hardware Technology</h4>
+              <p>JMC Institute</p>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-year">2018</div>
+            <div class="edu-body">
+              <h4>G.C.E. Advanced Level – Arts Stream</h4>
+              <p>Zahira College, Colombo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">07.</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <span class="featured-badge">Featured</span>
+            </div>
+            <h3 class="project-title">AI-SIEM Integration</h3>
+            <p class="project-description">
+              Implemented an AI-Driven SIEM to Enhance Security Using Wazuh. Built a central security system using Wazuh and the Kibana Stack to monitor logs and detect threats in real-time. Integrated AI/Machine Learning to distinguish real threats from false alarms.
+            </p>
+            <ul class="project-highlights">
+              <li>Real-time log monitoring and anomaly detection</li>
+              <li>AI/ML integration for intelligent threat classification</li>
+              <li>Automated vulnerability scanning tools</li>
+              <li>Kibana dashboards for live security data visualization</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-pill">Wazuh</span>
+              <span class="tech-pill">Elasticsearch</span>
+              <span class="tech-pill">Kibana</span>
+              <span class="tech-pill">ChatGPT API</span>
+              <span class="tech-pill">Linux</span>
+              <span class="tech-pill">AI/ML</span>
+            </div>
+          </div>
+          <div class="project-glow"></div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+            </div>
+            <h3 class="project-title">Happy Toys – E-Commerce</h3>
+            <p class="project-description">
+              Developed a full-featured e-commerce website for an online toy store using WordPress with custom design and functionality.
+            </p>
+            <div class="project-tech">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">CSS</span>
+              <span class="tech-pill">Bootstrap</span>
+              <span class="tech-pill">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+            </div>
+            <h3 class="project-title">Budget App</h3>
+            <p class="project-description">
+              Web-based application for calculating and tracking income and expenses, helping users manage their personal finances effectively.
+            </p>
+            <div class="project-tech">
+              <span class="tech-pill">Laravel</span>
+              <span class="tech-pill">PHP</span>
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">CSS</span>
+              <span class="tech-pill">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+            </div>
+            <h3 class="project-title">Task Diary</h3>
+            <p class="project-description">
+              Web-based task management application for organizing and tracking daily tasks and productivity.
+            </p>
+            <div class="project-tech">
+              <span class="tech-pill">Laravel</span>
+              <span class="tech-pill">PHP</span>
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">CSS</span>
+              <span class="tech-pill">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              </div>
+            </div>
+            <h3 class="project-title">Maths Cal</h3>
+            <p class="project-description">
+              Desktop application for solving simple mathematical problems, built as a C# Windows Forms application.
+            </p>
+            <div class="project-tech">
+              <span class="tech-pill">C#</span>
+              <span class="tech-pill">Windows Forms</span>
+              <span class="tech-pill">.NET</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">08.</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro">
+            I'm currently open to new opportunities in <strong>cybersecurity</strong>, <strong>red team operations</strong>, and <strong>security engineering</strong> roles. Whether you have a question, a project in mind, or just want to connect — feel free to reach out!
+          </p>
+          <div class="contact-items">
+            <a href="mailto:fawzulhaq.mnm@gmail.com" class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-item-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">fawzulhaq.mnm@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:+94765239680" class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-item-text">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+94 765 239 680</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/fawzul-haq-377092174" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div class="contact-item-text">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">fawzul-haq-377092174</span>
+              </div>
+            </a>
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-item-text">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Kalubowila, Sri Lanka 🇱🇰</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-cta">
+            <button onclick="generateATSCVFromURL()" class="btn-primary" id="cv-contact-btn" style="cursor:pointer;border:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Full CV (PDF)
+            </button>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" placeholder="Subject" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full" id="form-submit-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+            <p class="form-note">* This will open your email client</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-bracket">[</span>
+          <span class="logo-text">F<span class="logo-accent">H</span>AQ</span>
+          <span class="logo-bracket">]</span>
+        </div>
+        <p class="footer-tagline">Securing the digital world, one system at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fawzul-haq-377092174" target="_blank" rel="noopener" class="footer-social">LinkedIn</a>
+        <a href="https://github.com/fawzulhaq" target="_blank" rel="noopener" class="footer-social">GitHub</a>
+        <a href="https://tryhackme.com/p/fawzulhaq" target="_blank" rel="noopener" class="footer-social">TryHackMe</a>
+        <a href="mailto:fawzulhaq.mnm@gmail.com" class="footer-social">Email</a>
+        <a href="update-profile.html" class="footer-social" style="opacity:0.4;font-size:0.7rem" title="Admin: Update Profile">⚙️ Update</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          <span class="term-prompt-small">root@fawzulhaq:~$</span> 
+          &copy; 2026 M.N.M. Fawzul Haq. All rights reserved. 
+          <span class="footer-cursor">█</span>
+        </p>
+        <p class="footer-build">Built with 💚 for GitHub Pages</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cv-generator.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
